@@ -2,6 +2,7 @@ package com.holdenkarau.sparkDemoProject
 
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql._
+import org.apache.spark.sql.streaming.Trigger._
 
 /**
   * Use this to test the app locally, from sbt:
