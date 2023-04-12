@@ -1,6 +1,4 @@
 plugins {
-    id 'io.github.cosmicsilence.scalafix' version '0.1.14'
-
     id "scala"
     id 'java-library'
 }
@@ -31,8 +29,6 @@ repositories {
 }
 
 dependencies {
-    scalafix group: 'com.holdenkarau', name: 'spark-scalafix-rules-2.4.8_2.12', version: '0.1.9'
-
     compileOnly group: "org.apache.spark", name: 'spark-streaming_2.12', version: '2.4.8'
     compileOnly group: "org.apache.spark", name: 'spark-sql_2.12', version: '2.4.8'
 
