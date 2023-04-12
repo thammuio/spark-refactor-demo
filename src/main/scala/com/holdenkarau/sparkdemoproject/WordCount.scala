@@ -8,6 +8,8 @@ import org.apache.spark._
 import org.apache.spark.rdd._
 import org.apache.spark.sql._
 import org.apache.spark.sql.functions._
+import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.streaming.Trigger._
 
 object WordCount {
   /**
@@ -19,7 +21,7 @@ object WordCount {
     separators : Array[Char] = " ".toCharArray,
     stopWords : Set[String] = Set("the")): DataFrame = {
     // Yes this is deprecated, but it should get rewritten by our magic.
-    val spark  = SQLContext.getOrCreate(SparkContext.getOrCreate())
+    val spark  = SparkSession.builder.getOrCreate().sqlContext
     import spark.implicits._
     val splitPattern = "[" + separators.mkString("") + "]"
     val stopArray = array(stopWords.map(lit).toSeq:_*)
@@ -30,13 +32,13 @@ object WordCount {
     def keyMe(x: Row): String = {
       x.apply(0).asInstanceOf[String]
     }
-    words.groupByKey(keyMe).count().select(col("value").as("word"), col("count(1)").as("count")).orderBy("count")
+    words.groupByKey(keyMe).count().select(col("key").as("word"), col("count(1)").as("count")).orderBy("count")
   }
 
   def withStopWordsFiltered(rdd : RDD[String],
     separators : Array[Char] = " ".toCharArray,
     stopWords : Set[String] = Set("the")): RDD[(String, Long)] = {
-    val spark  = SQLContext.getOrCreate(SparkContext.getOrCreate())
+    val spark  = SparkSession.builder.getOrCreate().sqlContext
     import spark.implicits._
     val df = rdd.toDF
     val resultDF = dataFrameWC(df, separators, stopWords)
