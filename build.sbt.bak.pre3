@@ -12,7 +12,7 @@ lazy val root = (project in file(".")).
     name := "sparkDemoProject",
     version := "0.0.1",
 
-    sparkVersion := "3.3.1",
+    sparkVersion := "2.4.8",
 
     javacOptions ++= Seq("-source", "1.8", "-target", "1.8"),
     javaOptions ++= Seq("-Xms512M", "-Xmx2048M", "-XX:MaxPermSize=2048M", "-XX:+CMSClassUnloadingEnabled"),
@@ -23,12 +23,12 @@ lazy val root = (project in file(".")).
     coverageHighlighting := true,
 
     libraryDependencies ++= Seq(
-      "org.apache.spark" %% "spark-streaming" % "3.3.1" % "provided",
-      "org.apache.spark" %% "spark-sql" % "3.3.1" % "provided",
+      "org.apache.spark" %% "spark-streaming" % "2.4.8" % "provided",
+      "org.apache.spark" %% "spark-sql" % "2.4.8" % "provided",
 
       "org.scalatest" %% "scalatest" % "3.2.2" % "test",
       "org.scalacheck" %% "scalacheck" % "1.15.2" % "test",
-      "com.holdenkarau" %% "spark-testing-base" % "3.3.1_1.3.0" % "test"
+      "com.holdenkarau" %% "spark-testing-base" % "2.4.8_1.3.0" % "test"
     ),
 
     // uses compile classpath for the run task, including "provided" jar (cf http://stackoverflow.com/a/21803413/3827)
@@ -56,6 +56,5 @@ lazy val root = (project in file(".")).
     }
   )
 scalafixDependencies in ThisBuild +=
-  "com.holdenkarau" %% "spark-scalafix-rules-3.3.1" % "0.1.9"
+  "com.holdenkarau" %% "spark-scalafix-rules-2.4.8" % "0.1.9"
 semanticdbEnabled in ThisBuild := true
-
