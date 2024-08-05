@@ -1,3 +1,4 @@
-# Spark Pipeline Code Upgrade Process
-- Scala Version 2.12.13
-- Spark Upgrade from Spark 2.4.8 to Spark 3.3.1
+# Spark Pipeline Code Upgrade
+
+This repository demonstrates the process of upgrading and refactoring Spark pipelines with included code samples and explanations. For detailed explanations and insights on upgrading Spark pipelines, please refer to the article "[Upgrading Spark Pipelines Code](https://dzone.com/articles/upgrading-spark-pipelines-code)" by Suri Nuthalapati on DZone.
+
