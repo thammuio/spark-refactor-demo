@@ -6,6 +6,7 @@ package com.holdenkarau.sparkDemoProject
 
 import com.holdenkarau.spark.testing.SharedSparkContext
 import org.scalatest.funsuite.AnyFunSuite
+import org.apache.spark.sql.streaming.Trigger._
 
 class WordCountTest extends AnyFunSuite with SharedSparkContext {
   test("word count with Stop Words Removed"){
